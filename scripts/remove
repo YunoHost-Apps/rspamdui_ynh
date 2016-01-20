@@ -1,7 +1,7 @@
 #!/bin/bash
 
-domain=$(sudo yunohost app setting transmission domain)
+domain=$(sudo yunohost app setting rspamdui domain)
 
-sudo rm /etc/nginx/conf.d/$domain.d/transmission.conf
+sudo rm /etc/nginx/conf.d/$domain.d/rspamdui.conf
 sudo service nginx reload
 sudo yunohost app ssowatconf                                                                                                                                                                     

@@ -16,6 +16,7 @@ if [[ ! $? -eq 0 ]]; then
 fi
 
 # Configure Nginx and reload
-sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
+# Removing trailing '/' in path to handle both subdir and subdomain installs.
+sed -i "s@PATHTOCHANGE@${path%/}@g" ../conf/nginx.conf
 sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/rspamdui.conf
 sudo service nginx reload

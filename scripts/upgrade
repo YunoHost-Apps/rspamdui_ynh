@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Retrieve arguments
-domain=$(sudo yunohost app setting transmission domain)
-path=$(sudo yunohost app setting transmission path)
+domain=$(sudo yunohost app setting rspamdui domain)
+path=$(sudo yunohost app setting rspamdui path)
 
 # Check port availability
 sudo yunohost app checkport 11334
@@ -11,6 +11,6 @@ if [[ ! $? -eq 0 ]]; then
 fi
 
 # Configure Nginx and reload
-sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
+sed -i "s@PATHTOCHANGE@${path%/}@g" ../conf/nginx.conf
 sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/rspamdui.conf
 sudo service nginx reload
