@@ -1,0 +1,7 @@
+#!/bin/bash
+
+domain=$(sudo yunohost app setting transmission domain)
+
+sudo rm /etc/nginx/conf.d/$domain.d/transmission.conf
+sudo service nginx reload
+sudo yunohost app ssowatconf                                                                                                                                                                     
