@@ -1,38 +1,51 @@
 {
-  "name": "Rspamd UI",
-  "id": "rspamdui",
-  "description": {
-    "en": "Simple control interface for rspamd spam filtering system",
-    "fr": "Simple control interface for rspamd spam filtering system"
-  },
-  "url": "https://rspamd.com/webui",
-  "maintainer": {
-    "name": "ju",
-    "email": "ju@paraiso.me"
-  },
-  "multi_instance": "false",
-  "services": [
-      "nginx"
-  ],
-  "arguments": {
-    "install": [
-      {
-        "name": "domain",
-        "type": "domain",
-        "ask": {
-          "en": "Choose a domain for Rspamd UI"
-        },
-        "example": "domain.org"
-      },
-      {
-        "name": "path",
-        "type": "path",
-        "ask": {
-          "en": "Choose a path for Rspamd UI"
-        },
-        "example": "/rspamd",
-        "default": "/rspamd"
-      }
-    ]
-  }
+    "name": "Rspamd UI",
+    "id": "rspamdui",
+    "packaging_format": 1,
+    "description": {
+        "en": "Simple control interface for rspamd spam filtering system",
+        "fr": "Simple control interface for rspamd spam filtering system"
+    },
+    "version": "1.0~ynh1",
+    "url": "https://rspamd.com/webui",
+    "upstream": {
+        "license": "Apache-2.0",
+        "website": "https://rspamd.com/webui",
+        "code": "https://github.com/rspamd/rspamd"
+    },
+    "license": "Apache-2.0",
+    "maintainer": {
+        "name": "ju",
+        "email": "ju@paraiso.me"
+    },
+    "requirements": {
+        "yunohost": ">= 4.3.0"
+    },
+    "multi_instance": "false",
+    "services": [
+        "nginx"
+    ],
+    "arguments": {
+        "install": [
+            {
+                "name": "domain",
+                "type": "domain"
+            },
+            {
+                "name": "path",
+                "type": "path",
+                "example": "/rspamd",
+                "default": "/rspamd"
+            },
+            {
+                "name": "is_public",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "name": "password",
+                "type": "password"
+            }
+        ]
+    }
 }
