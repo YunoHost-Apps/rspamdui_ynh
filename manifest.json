@@ -4,7 +4,7 @@
     "packaging_format": 1,
     "description": {
         "en": "Simple control interface for rspamd spam filtering system",
-        "fr": "Simple control interface for rspamd spam filtering system"
+        "fr": "Interface de contrôle simple pour le système de filtrage de spam rspamd"
     },
     "version": "1.0~ynh1",
     "url": "https://rspamd.com/webui",
