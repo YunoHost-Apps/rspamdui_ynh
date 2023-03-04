@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # Rspamd Web UI for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/rspamdui.svg)](https://dash.yunohost.org/appci/app/rspamdui) ![Working status](https://ci-apps.yunohost.org/ci/badges/rspamdui.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/rspamdui.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/rspamdui.svg)](https://dash.yunohost.org/appci/app/rspamdui) ![Working status](https://ci-apps.yunohost.org/ci/badges/rspamdui.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/rspamdui.maintain.svg)
+
 [![Install Rspamd Web UI with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=rspamdui)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -18,7 +19,6 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 Simple control interface for rspamd spam filtering system
 
 **Shipped version:** 1.0~ynh1
-
 ## Documentation and resources
 
 * Official app website: <https://rspamd.com/webui>
