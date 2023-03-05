@@ -10,15 +10,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# LOAD SETTINGS
-#=================================================
-#REMOVEME? ynh_script_progression --message="Loading installation settings..."
-
-#REMOVEME? app=$YNH_APP_INSTANCE_NAME
-
-#REMOVEME? domain=$(ynh_app_setting_get --app=$app --key=domain)
-
-#=================================================
 # STANDARD REMOVE
 #=================================================
 # REMOVE NGINX CONFIGURATION
