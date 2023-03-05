@@ -16,7 +16,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-Simple control interface for rspamd spam filtering system
+Rspamdui is a simple control interface for Rspamd spam filtering system. It provides basic functions for setting metric actions, scores, viewing statistic and learning.
 
 **Shipped version:** 1.0~ynh1
 ## Documentation and resources
