@@ -23,7 +23,6 @@ Rspamdui is a simple control interface for Rspamd spam filtering system. It prov
 
 * Official app website: <https://rspamd.com/webui>
 * Upstream app code repository: <https://github.com/rspamd/rspamd>
-* YunoHost documentation for this app: <https://yunohost.org/app_rspamdui>
 * Report a bug: <https://github.com/YunoHost-Apps/rspamdui_ynh/issues>
 
 ## Developer info
