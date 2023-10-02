@@ -15,7 +15,7 @@ website = "https://rspamd.com/webui"
 code = "https://github.com/rspamd/rspamd"
 
 [integration]
-yunohost = ">= 11.1.13"
+yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = false
 ldap = false
