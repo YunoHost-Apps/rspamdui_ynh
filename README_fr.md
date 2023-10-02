@@ -23,7 +23,6 @@ Interface de contrôle simple pour le système de filtrage de spam rspamd
 
 * Site officiel de l’app : <https://rspamd.com/webui>
 * Dépôt de code officiel de l’app : <https://github.com/rspamd/rspamd>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_rspamdui>
 * Signaler un bug : <https://github.com/YunoHost-Apps/rspamdui_ynh/issues>
 
 ## Informations pour les développeurs
