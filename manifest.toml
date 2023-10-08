@@ -7,7 +7,7 @@ description.fr = "Interface de contrôle simple pour le système de filtrage de 
 
 version = "1.0~ynh1"
 
-maintainers = ["ju"]
+maintainers = []
 
 [upstream]
 license = "Apache-2.0"
