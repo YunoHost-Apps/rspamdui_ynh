@@ -2,4 +2,9 @@ test_format = 1.0
 
 [default]
 
-    preinstall = "systemctl enable rspamd --now"
+    # ------------
+    # Tests to run
+    # ------------
+
+    preinstall = "sudo systemctl enable rspamd --now"
+
