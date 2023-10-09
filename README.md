@@ -18,7 +18,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 Rspamdui is a simple control interface for Rspamd spam filtering system. It provides basic functions for setting metric actions, scores, viewing statistic and learning.
 
-**Shipped version:** 1.0~ynh1
+**Shipped version:** 1.0~ynh2
 ## Documentation and resources
 
 * Official app website: <https://rspamd.com/webui>
