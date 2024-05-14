@@ -18,7 +18,7 @@ No se debe editar a mano.
 
 Rspamdui is a simple control interface for Rspamd spam filtering system. It provides basic functions for setting metric actions, scores, viewing statistic and learning.
 
-**Versión actual:** 1.0~ynh2
+**Versión actual:** 1.0~ynh3
 
 ## Capturas
 
