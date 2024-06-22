@@ -9,7 +9,7 @@ It shall NOT be edited by hand.
 
 [![Install Rspamd Web UI with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=rspamdui)
 
-*[Read this README is other languages.](./ALL_README.md)*
+*[Read this README in other languages.](./ALL_README.md)*
 
 > *This package allows you to install Rspamd Web UI quickly and simply on a YunoHost server.*  
 > *If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
@@ -18,7 +18,7 @@ It shall NOT be edited by hand.
 
 Rspamdui is a simple control interface for Rspamd spam filtering system. It provides basic functions for setting metric actions, scores, viewing statistic and learning.
 
-**Shipped version:** 1.0~ynh2
+**Shipped version:** 1.0~ynh3
 
 ## Screenshots
 
