@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Keep this path for calling _common.sh inside the execution's context of backup and restore scripts
 source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
@@ -11,16 +10,12 @@ source /usr/share/yunohost/helpers
 password=$(ynh_app_setting_get --key=password)
 
 #=================================================
-# STANDARD RESTORATION STEPS
-#=================================================
 # RESTORE THE NGINX CONFIGURATION
 #=================================================
 ynh_script_progression "Restoring the NGINX web server configuration..."
 
 ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 
-#=================================================
-# SPECIFIC RESTORATION
 #=================================================
 # CONFIGURE RSPAMD
 #=================================================

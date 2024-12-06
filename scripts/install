@@ -15,11 +15,8 @@ ynh_app_setting_set --key=password --value=$password
 #=================================================
 ynh_script_progression "Configuring NGINX web server..."
 
-# Create a dedicated NGINX config
 ynh_config_add_nginx
 
-#=================================================
-# SPECIFIC SETUP
 #=================================================
 # CONFIGURE RSPAMD
 #=================================================
