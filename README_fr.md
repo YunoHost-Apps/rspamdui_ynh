@@ -18,7 +18,7 @@ Il NE doit PAS être modifié à la main.
 
 ## Vue d’ensemble
 
-Rspamdui is a simple control interface for Rspamd spam filtering system. It provides basic functions for setting metric actions, scores, viewing statistic and learning.
+Rspamd UI est une interface de contrôle simple pour le système de filtrage anti-spam Rspamd. Il fournit des fonctions de base pour définir des actions métriques, des scores, afficher des statistiques et apprendre.
 
 **Version incluse :** 1.0~ynh3
 
