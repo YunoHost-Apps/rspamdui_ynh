@@ -1,12 +1,5 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
-# Keep this path for calling _common.sh inside the execution's context of backup and restore scripts
 source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
@@ -14,41 +7,35 @@ source /usr/share/yunohost/helpers
 # LOAD SETTINGS
 #=================================================
 
-password=$(ynh_app_setting_get --app=$app --key=password)
+password=$(ynh_app_setting_get --key=password)
 
-#=================================================
-# STANDARD RESTORATION STEPS
 #=================================================
 # RESTORE THE NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Restoring the NGINX web server configuration..."
+ynh_script_progression "Restoring the NGINX web server configuration..."
 
-ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
+ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 
-#=================================================
-# SPECIFIC RESTORATION
 #=================================================
 # CONFIGURE RSPAMD
 #=================================================
-ynh_script_progression --message="Configuring RSPAMD..."
+ynh_script_progression "Configuring RSPAMD..."
 
 encrypted_password=$(rspamadm pw -p $password)
 
-ynh_replace_special_string --match_string="^password = .*" --replace_string="password = \"$encrypted_password\";" --target_file=/etc/rspamd/worker-controller.inc
+ynh_replace_regex --match="^password = .*" --replace="password = \"$encrypted_password\";" --file=/etc/rspamd/worker-controller.inc
 
-ynh_systemd_action --service_name=rspamd --action="restart"
+ynh_systemctl --service=rspamd --action="restart"
 
-#=================================================
-# GENERIC FINALIZATION
 #=================================================
 # RELOAD NGINX
 #=================================================
-ynh_script_progression --message="Reloading NGINX web server..."
+ynh_script_progression "Reloading NGINX web server..."
 
-ynh_systemd_action --service_name=nginx --action=reload
+ynh_systemctl --service=nginx --action=reload
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Restoration completed for $app"
+ynh_script_progression "Restoration completed for $app"

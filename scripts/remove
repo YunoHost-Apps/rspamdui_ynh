@@ -1,37 +1,26 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# STANDARD REMOVE
-#=================================================
 # REMOVE NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Removing NGINX web server configuration..."
+ynh_script_progression "Removing NGINX web server configuration..."
 
-# Remove the dedicated NGINX config
-ynh_remove_nginx_config
+ynh_config_remove_nginx
 
-#=================================================
-# SPECIFIC REMOVE
 #=================================================
 # CONFIGURE RSPAMD
 #=================================================
-ynh_script_progression --message="Configuring RSPAMD..."
+ynh_script_progression "Configuring RSPAMD..."
 
-ynh_replace_special_string --match_string="^password = .*" --replace_string="password = \"q1\";" --target_file=/etc/rspamd/worker-controller.inc
+ynh_replace_regex --match="^password = .*" --replace="password = \"q1\";" --file=/etc/rspamd/worker-controller.inc
 
-ynh_systemd_action --service_name=rspamd --action="restart"
+ynh_systemctl --service=rspamd --action="restart"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Removal of $app completed"
+ynh_script_progression "Removal of $app completed"
