@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
@@ -14,33 +8,31 @@ source /usr/share/yunohost/helpers
 #=================================================
 
 password=$YNH_APP_ARG_PASSWORD
-ynh_app_setting_set --app=$app --key=password --value=$password
+ynh_app_setting_set --key=password --value=$password
 
-#=================================================
-# STANDARD MODIFICATIONS
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring NGINX web server..."
+ynh_script_progression "Configuring NGINX web server..."
 
 # Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 #=================================================
 # SPECIFIC SETUP
 #=================================================
 # CONFIGURE RSPAMD
 #=================================================
-ynh_script_progression --message="Configuring RSPAMD..."
+ynh_script_progression "Configuring RSPAMD..."
 
 encrypted_password=$(rspamadm pw -p $password)
 
-ynh_replace_special_string --match_string="^password = .*" --replace_string="password = \"$encrypted_password\";" --target_file=/etc/rspamd/worker-controller.inc
+ynh_replace_regex --match="^password = .*" --replace="password = \"$encrypted_password\";" --file=/etc/rspamd/worker-controller.inc
 
-ynh_systemd_action --service_name=rspamd --action="restart"
+ynh_systemctl --service=rspamd --action="restart"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed"
+ynh_script_progression "Installation of $app completed"
