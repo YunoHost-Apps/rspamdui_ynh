@@ -5,7 +5,9 @@
 
 # YunoHost 上的 Rspamd Web UI
 
-[![集成程度](https://dash.yunohost.org/integration/rspamdui.svg)](https://dash.yunohost.org/appci/app/rspamdui) ![工作状态](https://ci-apps.yunohost.org/ci/badges/rspamdui.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/rspamdui.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/rspamdui)](https://ci-apps.yunohost.org/ci/apps/rspamdui/)
+![工作状态](https://apps.yunohost.org/badge/state/rspamdui)
+![维护状态](https://apps.yunohost.org/badge/maintained/rspamdui)
 
 [![使用 YunoHost 安装 Rspamd Web UI](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=rspamdui)
 

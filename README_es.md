@@ -5,7 +5,9 @@ No se debe editar a mano.
 
 # Rspamd Web UI para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/rspamdui.svg)](https://dash.yunohost.org/appci/app/rspamdui) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/rspamdui.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/rspamdui.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/rspamdui)](https://ci-apps.yunohost.org/ci/apps/rspamdui/)
+![Estado funcional](https://apps.yunohost.org/badge/state/rspamdui)
+![Estado En Mantención](https://apps.yunohost.org/badge/maintained/rspamdui)
 
 [![Instalar Rspamd Web UI con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=rspamdui)
 
@@ -33,7 +35,7 @@ Rspamdui is a simple control interface for Rspamd spam filtering system. It prov
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/rspamdui_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/rspamdui_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
