@@ -20,7 +20,7 @@ Il NE doit PAS être modifié à la main.
 
 Rspamd UI est une interface de contrôle simple pour le système de filtrage anti-spam Rspamd. Il fournit des fonctions de base pour définir des actions métriques, des scores, afficher des statistiques et apprendre.
 
-**Version incluse :** 1.0~ynh3
+**Version incluse :** 1.0~ynh4
 
 ## Captures d’écran
 
