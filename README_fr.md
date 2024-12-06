@@ -5,7 +5,9 @@ Il NE doit PAS être modifié à la main.
 
 # Rspamd Web UI pour YunoHost
 
-[![Niveau d’intégration](https://dash.yunohost.org/integration/rspamdui.svg)](https://dash.yunohost.org/appci/app/rspamdui) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/rspamdui.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/rspamdui.maintain.svg)
+[![Niveau d’intégration](https://apps.yunohost.org/badge/integration/rspamdui)](https://ci-apps.yunohost.org/ci/apps/rspamdui/)
+![Statut du fonctionnement](https://apps.yunohost.org/badge/state/rspamdui)
+![Statut de maintenance](https://apps.yunohost.org/badge/maintained/rspamdui)
 
 [![Installer Rspamd Web UI avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=rspamdui)
 
