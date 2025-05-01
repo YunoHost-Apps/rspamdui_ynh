@@ -5,7 +5,7 @@ name = "Rspamd Web UI"
 description.en = "Simple control interface for rspamd spam filtering system"
 description.fr = "Interface de contrôle simple pour le système de filtrage de spam rspamd"
 
-version = "1.0~ynh4"
+version = "1.0~ynh5"
 
 maintainers = []
 
@@ -15,7 +15,7 @@ website = "https://rspamd.com/webui"
 code = "https://github.com/rspamd/rspamd"
 
 [integration]
-yunohost = ">= 11.2.30"
+yunohost = ">= 12.0.9"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = false
