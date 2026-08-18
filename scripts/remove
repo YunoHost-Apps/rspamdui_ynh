@@ -14,6 +14,10 @@ ynh_config_remove_nginx
 #=================================================
 ynh_script_progression "Configuring RSPAMD..."
 
+ynh_safe_rm /etc/rspamd/local.d/worker-controller.inc
+
+# Installs made by earlier versions of this app wrote the password into the conffile itself;
+# restore the stock value so rspamd upgrades stop stalling on a dpkg conffile prompt.
 ynh_replace_regex --match="^password = .*" --replace="password = \"q1\";" --file=/etc/rspamd/worker-controller.inc
 
 ynh_systemctl --service=rspamd --action="restart"
