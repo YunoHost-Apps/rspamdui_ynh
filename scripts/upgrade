@@ -10,6 +10,24 @@ ynh_script_progression "Upgrading NGINX web server configuration..."
 ynh_config_add_nginx
 
 #=================================================
+# CONFIGURE RSPAMD
+#=================================================
+ynh_script_progression "Configuring RSPAMD..."
+
+# Installs made before the password moved to local.d have it written into
+# worker-controller.inc itself, which stalls rspamd package upgrades on a dpkg conffile
+# prompt. Recreate the override from the stored setting if it is missing...
+if [ ! -e /etc/rspamd/local.d/worker-controller.inc ]; then
+	encrypted_password=$(rspamadm pw -p $password)
+	echo "password = \"$encrypted_password\";" > /etc/rspamd/local.d/worker-controller.inc
+fi
+
+# ...then restore the conffile's stock value, so dpkg sees it unmodified again.
+ynh_replace_regex --match="^password = .*" --replace="password = \"q1\";" --file=/etc/rspamd/worker-controller.inc
+
+ynh_systemctl --service=rspamd --action="restart"
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 

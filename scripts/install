@@ -22,7 +22,12 @@ ynh_script_progression "Configuring RSPAMD..."
 
 encrypted_password=$(rspamadm pw -p $password)
 
-ynh_replace_regex --match="^password = .*" --replace="password = \"$encrypted_password\";" --file=/etc/rspamd/worker-controller.inc
+# Set the password through local.d rather than editing worker-controller.inc, which is a
+# conffile owned by the rspamd package: modifying it makes every later rspamd upgrade that
+# ships a new version of that file stall on an unanswerable dpkg prompt.
+# local.d is included at priority=1 and merges into the section, so this overrides the
+# stock password while leaving count/secure_ip/static_dir intact.
+echo "password = \"$encrypted_password\";" > /etc/rspamd/local.d/worker-controller.inc
 
 ynh_systemctl --service=rspamd --action="restart"
 
