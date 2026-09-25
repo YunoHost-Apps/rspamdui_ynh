@@ -7,6 +7,14 @@
 source /usr/share/yunohost/helpers
 
 #=================================================
+# ENSURE DEPENDENCY
+#=================================================
+if ! yunohost app list | grep -qw "id: rspamd"
+then
+    ynh_die "Please install Rspamd app beforehand. There is a yunhost app for that!"
+fi
+
+#=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."

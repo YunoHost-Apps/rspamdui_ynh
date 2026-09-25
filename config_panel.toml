@@ -2,7 +2,7 @@ version = "1.0"
 
 [main]
 name.en = "Rspamd Web UI configuration"
-services = ["__APP__"]
+services = ["rspamd"]
 
     [main.customization]
 
