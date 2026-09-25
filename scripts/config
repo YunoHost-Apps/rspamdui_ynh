@@ -23,7 +23,7 @@ get__password() {
 set__password() {
     if [ ! "$password" == "" ]
     then
-        ynh_print_info --message="Saving the new password $password in the Rspamd configuration..."
+        ynh_print_info "Saving the new password $password in the Rspamd configuration..."
         HASH=$(rspamadm pw -p "$password")
         echo "password = \"$HASH\"" > /etc/rspamd/local.d/worker-controller.inc
     fi
