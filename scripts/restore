@@ -18,12 +18,15 @@ ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 #=================================================
 
 ynh_restore "/etc/rspamd/local.d/worker-controller.inc"
+chmod 644 /etc/rspamd/local.d/worker-controller.inc
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
 
 ynh_systemctl --service=rspamd --action="restart"
+
+ynh_systemctl --service=nginx --action="reload"
 
 #=================================================
 # END OF SCRIPT
