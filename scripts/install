@@ -1,28 +1,34 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source /usr/share/yunohost/helpers
 
 #=================================================
-# RETRIEVE ARGUMENTS FROM THE MANIFEST
+# APP INITIAL CONFIGURATION
 #=================================================
+ynh_script_progression "Adding $app's configuration files..."
 
-ynh_app_setting_set --key=password --value=$password
+# Set web interface password
+HASH=$(rspamadm pw -p "$password")
+echo "password = \"$HASH\"" > /etc/rspamd/local.d/worker-controller.inc
+
+# Set permissions
+chmod 644 /etc/rspamd/local.d/worker-controller.inc
 
 #=================================================
-# NGINX CONFIGURATION
+# SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression "Configuring NGINX web server..."
+ynh_script_progression "Adding system configurations related to $app..."
 
 ynh_config_add_nginx
 
 #=================================================
-# CONFIGURE RSPAMD
+# START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression "Configuring RSPAMD..."
-
-encrypted_password=$(rspamadm pw -p $password)
-
-ynh_replace_regex --match="^password = .*" --replace="password = \"$encrypted_password\";" --file=/etc/rspamd/worker-controller.inc
+ynh_script_progression "Starting $app's systemd service..."
 
 ynh_systemctl --service=rspamd --action="restart"
 

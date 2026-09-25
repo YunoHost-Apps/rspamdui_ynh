@@ -1,11 +1,37 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source /usr/share/yunohost/helpers
 
 #=================================================
-# NGINX CONFIGURATION
+# ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-ynh_script_progression "Upgrading NGINX web server configuration..."
+ynh_script_progression "Ensuring downward compatibility..."
+
+if ynh_app_upgrading_from_version_before 4.2.0~ynh1
+then
+    # Retrieve current password form settings and delete that settings
+    password=$(ynh_app_setting_get --key=password)
+    ynh_app_setting_delete --key=password
+
+    # Set web interface password
+    HASH=$(rspamadm pw -p "$password")
+    echo "password = \"$HASH\"" > /etc/rspamd/local.d/worker-controller.inc
+
+    # Set permissions
+    chmod 644 /etc/rspamd/local.d/worker-controller.inc
+
+    # Restore /etc/rspamd/worker-controller.inc to default
+    ynh_replace_regex --match="^password = .*" --replace="password = \"q1\";" --file=/etc/rspamd/worker-controller.inc
+fi
+
+#=================================================
+# REAPPLY SYSTEM CONFIGURATION
+#=================================================
+ynh_script_progression "Upgrading system configurations related to $app..."
 
 ynh_config_add_nginx
 

@@ -1,20 +1,23 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source /usr/share/yunohost/helpers
 
 #=================================================
-# REMOVE NGINX CONFIGURATION
+# REMOVE SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression "Removing NGINX web server configuration..."
+ynh_script_progression "Removing system configurations related to $app..."
 
 ynh_config_remove_nginx
 
-#=================================================
-# CONFIGURE RSPAMD
-#=================================================
-ynh_script_progression "Configuring RSPAMD..."
+ynh_safe_rm "/etc/rspamd/local.d/worker-controller.inc"
 
-ynh_replace_regex --match="^password = .*" --replace="password = \"q1\";" --file=/etc/rspamd/worker-controller.inc
+#=================================================
+# START SYSTEMD SERVICE
+#=================================================
 
 ynh_systemctl --service=rspamd --action="restart"
 

@@ -6,10 +6,13 @@ test_format = 1.0
     # Tests to run
     # ------------
 
-    #preinstall = "sudo systemctl enable rspamd --now"
-
     preinstall = """
     sudo yunohost app install https://github.com/YunoHost-Apps/rspamd_ynh
     sudo systemctl enable rspamd --now"
     """
 
+    # -------------------------------
+    # Commits to test upgrade from
+    # -------------------------------
+
+    test_upgrade_from.d27c59c776b15fe8a62ab2a10985cbbcf5647ebb.name = "Upgrade from 1.0~ynh5"
