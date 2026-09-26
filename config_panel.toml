@@ -1,0 +1,11 @@
+version = "1.0"
+
+[main]
+name.en = "Rspamd Web UI configuration"
+services = ["rspamd"]
+
+    [main.customization]
+
+        [main.customization.password]
+        ask.en = "Set a new password for the Rspamd web interface access"
+        type = "password"

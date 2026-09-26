@@ -1,37 +1,40 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source /usr/share/yunohost/helpers
 
 #=================================================
-# LOAD SETTINGS
+# ENSURE DEPENDENCY
 #=================================================
+if ! yunohost app list | grep -qw "id: rspamd"
+then
+    ynh_die "Please install Rspamd app beforehand. There is a yunhost app for that!"
+fi
 
-password=$(ynh_app_setting_get --key=password)
-
 #=================================================
-# RESTORE THE NGINX CONFIGURATION
+# RESTORE SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression "Restoring the NGINX web server configuration..."
+ynh_script_progression "Restoring system configurations related to $app..."
 
 ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 
 #=================================================
-# CONFIGURE RSPAMD
+# RESTORE VARIOUS FILES
 #=================================================
-ynh_script_progression "Configuring RSPAMD..."
 
-encrypted_password=$(rspamadm pw -p $password)
+ynh_restore "/etc/rspamd/local.d/worker-controller.inc"
+chmod 644 /etc/rspamd/local.d/worker-controller.inc
 
-ynh_replace_regex --match="^password = .*" --replace="password = \"$encrypted_password\";" --file=/etc/rspamd/worker-controller.inc
+#=================================================
+# START SYSTEMD SERVICE
+#=================================================
 
 ynh_systemctl --service=rspamd --action="restart"
 
-#=================================================
-# RELOAD NGINX
-#=================================================
-ynh_script_progression "Reloading NGINX web server..."
-
-ynh_systemctl --service=nginx --action=reload
+ynh_systemctl --service=nginx --action="reload"
 
 #=================================================
 # END OF SCRIPT
