@@ -6,23 +6,28 @@
 
 source /usr/share/yunohost/helpers
 
-#=================================================
-# REMOVE SYSTEM CONFIGURATION
-#=================================================
-ynh_script_progression "Removing system configurations related to $app..."
-
-ynh_config_remove_nginx
-
-ynh_safe_rm "/etc/rspamd/local.d/worker-controller.inc"
+ynh_abort_if_errors
 
 #=================================================
-# START SYSTEMD SERVICE
+# SPECIFIC GETTERS FOR TOML SHORT KEY
 #=================================================
 
-ynh_systemctl --service=rspamd --action="restart"
+get__password() {
+    echo ""
+}
 
 #=================================================
-# END OF SCRIPT
+# SPECIFIC SETTERS FOR TOML SHORT KEYS
 #=================================================
 
-ynh_script_progression "Removal of $app completed"
+set__password() {
+    if [ ! "$password" == "" ]
+    then
+        ynh_print_info "Saving the new password $password in the Rspamd configuration..."
+        HASH=$(rspamadm pw -p "$password")
+        echo "password = \"$HASH\"" > /etc/rspamd/local.d/worker-controller.inc
+    fi
+}
+
+#=================================================
+ynh_app_config_run "$1"
